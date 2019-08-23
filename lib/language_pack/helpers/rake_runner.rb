@@ -44,14 +44,14 @@ class LanguagePack::Helpers::RakeRunner
       options      = @default_options.merge(options)
       quiet_option = options.delete(:quiet)
 
-      puts "Running: rake #{task} --trace" unless quiet_option
+      puts "Running: rake #{task} --verbose" unless quiet_option
       time = Benchmark.realtime do
-        cmd = "rake #{task} --trace"
+        cmd = "rake #{task} --verbose"
 
         if quiet_option
-          self.output = run("rake #{task} --trace", options)
+          self.output = run("rake #{task} --verbose", options)
         else
-          self.output = pipe("rake #{task} --trace", options)
+          self.output = pipe("rake #{task} --verbose", options)
         end
       end
       self.time = time
